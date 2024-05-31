@@ -3,17 +3,33 @@
 以前零零散散学了一些，快速实践了一些特效，尤其是mmd的伪3d用的比较多。现在打算认真系统地学一下，目标是达到熟练高效地做文字特效，从而配合音乐做PV的水平。
 
 ## 快捷键
-
-- `home`：时间轴回到初始
-- `n`：输出结尾设为当前位置
-- `u`：收起当前layer参数
+- time line
+  - `b` `n` Work Area begin and end
+  - `+`, `-` 时间轴缩放
+  - `j`,`k` 有编辑的关键帧跳动 `i`,`o` 开头关键帧和最后关键帧。
+  - `[` `]`
+  - `alt+[ ]`
+  - `alt + /` 预览适当
+  - `home`：时间轴回到初始
+  - `ctrl + alt + s` save this frame to psd
+- layer
+  - `r`: rotation
+  - `t`: 透明度
+  - `s`: scale
+  - `p`: place
+  - `t`: transport
+  - `shift + ?`: add ?
+  - `u`：收起当前layer参数
+  - `ctrl + d`：layer复制
+  - `ctrl + shift + d` 切割
+  - `ctrl + alt + f` fit the composition
 - `'`：显示中心点
 - `y`：选择anchor
 - `ctrl + home`：shape layer刚画出来时，锚点anchor移动到画面中心。
 - `ctrl + alt + home`：锚点移到layer的中心。
-- `ctrl + d`：layer复制
 - `ctrl + '`：展示网格grid
 - `ctrl + shift +  '`：grid 吸附
+- `ctrl + alt + f` fit the composition
 
 ## 遇到的问题
 - 崩溃后再打开时，移动时间轴光标，画面没有变化或者黑屏，重启电脑则解决。
@@ -75,7 +91,7 @@ n = marker.nearestKey(time).index;
 if (time < marker.key(n).time){//如果在当前时间之后，要取前一个
 n = n-1;
 }
-if(n==0){
+if(n==0 && (time < markers.key(n).time)){
 n = 1
 }
 t = time - marker.key(n).time;
@@ -118,15 +134,24 @@ thisProperty.valueAtTime(t)
   var otherLayer = thisComp.layer("Captions"); // 获取另一个名为 "name" 的 layer
   var markers = otherLayer.marker;
   var i = markers.nearestKey(time).index;
-  // 检查标记名称是否符合 "x_1" 格式 且当前时间超过了这个mark时间，进行赋值
-  while (i > 1 && (markers.key(i).comment !== "j"|| time < markers.key(i).time)) {
+  // 检查当前时间是否超过了这个最近mark时间
+  if(i > 1 && time < markers.key(i).time) {
       i--;
   }
-
-  t = time - markers.key(i).time;
-  if(i==1 && markers.key(i).comment !== "j"){
-	  t=20000;
+  while (i > 1 && markers.key(i).comment !== "j") {
+      i--;
   }
+  // 现在i=1或者markers.key(i).comment == "j"
+  if (markers.key(i).comment == "j"){
+    t = time - markers.key(i).time;
+  }
+  else{
+    t = 200000;// 相当于不显示任何动画
+      //t = 0;// 显示初始动画
+  }
+  //if(t>2){//假设这个动画长度为2秒，如果想要超过后固定为特定样子可以使用
+  //  t = 0;
+  //}
   thisProperty.valueAtTime(t)
   ```
 - 重拍呼吸灯 把上面的 `markers.key(i).comment !== "j"`的 `j` 改为 `i` 即可。
