@@ -19,10 +19,12 @@
   - `p`: place
   - `t`: transport
   - `shift + ?`: add ?
+  - `uu`：展开当前layer的修改过的参数
   - `u`：收起当前layer参数
   - `ctrl + d`：layer复制
   - `ctrl + shift + d` 切割
   - `ctrl + alt + f` fit the composition
+  - `ctrl + alt + /` 替换所选图层的源
 - `'`：显示中心点
 - `y`：选择anchor
 - `ctrl + home`：shape layer刚画出来时，锚点anchor移动到画面中心。
