@@ -3,6 +3,7 @@
 - [图层 layer](#%E5%9B%BE%E5%B1%82-layer)
     - [跟踪遮罩](#%E8%B7%9F%E8%B8%AA%E9%81%AE%E7%BD%A9)
     - [自动追踪](#%E8%87%AA%E5%8A%A8%E8%BF%BD%E8%B8%AA)
+    - [环境图层](#%E7%8E%AF%E5%A2%83%E5%9B%BE%E5%B1%82)
     - [各种模式](#%E5%90%84%E7%A7%8D%E6%A8%A1%E5%BC%8F)
         - [屏幕模式 Screen](#%E5%B1%8F%E5%B9%95%E6%A8%A1%E5%BC%8F-screen)
         - [模板亮度](#%E6%A8%A1%E6%9D%BF%E4%BA%AE%E5%BA%A6)
@@ -19,8 +20,11 @@
         - [投影 drop shadow](#%E6%8A%95%E5%BD%B1-drop-shadow)
     - [通道](#%E9%80%9A%E9%81%93)
         - [转换通道](#%E8%BD%AC%E6%8D%A2%E9%80%9A%E9%81%93)
+        - [最小最大值 minmax](#%E6%9C%80%E5%B0%8F%E6%9C%80%E5%A4%A7%E5%80%BC-minmax)
         - [设置通道](#%E8%AE%BE%E7%BD%AE%E9%80%9A%E9%81%93)
     - [风格化 stylize](#%E9%A3%8E%E6%A0%BC%E5%8C%96-stylize)
+        - [马赛](#%E9%A9%AC%E8%B5%9B)
+        - [CC glass](#cc-glass)
         - [动态拼贴](#%E5%8A%A8%E6%80%81%E6%8B%BC%E8%B4%B4)
         - [发光 glow](#%E5%8F%91%E5%85%89-glow)
     - [扭曲](#%E6%89%AD%E6%9B%B2)
@@ -55,6 +59,10 @@
 会返回一堆mask的路径。
 
 ![alt text](./imgae/图层自动追踪.png)
+
+## 环境图层
+
+右键图层选择环境图层，会把颜色等影响给3d字体。目前，其他没影响。
 
 ## 各种模式
 
@@ -126,6 +134,12 @@ start offset 等参数可以用作制作变化动画。
 
 ### 转换通道
 
+### 最小最大值 minmax
+
+用于去除一些多余的线？
+
+![alt text](./imgae/通道最小值.png)
+
 ### 设置通道
 
 把RGB提取出来，形成常用的RGB效果。
@@ -133,6 +147,12 @@ start offset 等参数可以用作制作变化动画。
 ![alt text](./imgae/设置通道.png)
 
 ## 风格化 stylize
+
+### 马赛
+
+### CC glass
+
+![alt text](./imgae/ccglass.png)
 
 ### 动态拼贴
 

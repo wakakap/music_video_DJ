@@ -12,6 +12,7 @@
   - `alt + /` 预览适当
   - `home`：时间轴回到初始
   - `ctrl + alt + s` save this frame to psd
+  - `*`
 - layer
   - `r`: rotation
   - `t`: 透明度
@@ -32,8 +33,16 @@
 - `ctrl + '`：展示网格grid
 - `ctrl + shift +  '`：grid 吸附
 - `ctrl + alt + f` fit the composition
+- `ctrl + alt + c` 带属性链接复制。这样只能修改原本，连带副本一起修改。
+  - ![alt text](./imgae/带属性链接复制.png)
+  - 对于特效来说，先复制一个副本，选择原本你特效属性，带属性链接复制，再选中副本特效，再粘贴，再复制副本特效到多个。![alt text](./imgae/连带属性链接复制特效.png)
+
+## PX file プロキシ
+
+提前渲染，预览时用渲染的文件，减小符合，最终渲染时再取消选择，渲染原本文件。
 
 ## 遇到的问题
+- 文件整理，可以减小文件量，选择输出的合成然后 `文件-减少项目` 
 - 崩溃后再打开时，移动时间轴光标，画面没有变化或者黑屏，重启电脑则解决。
 
 ## 教程
@@ -202,3 +211,21 @@ thisProperty.valueAtTime(t)
 - 打开`keyboard_to_srt`，一边播放音乐，点击start，看着`kashi.txt`敲击键盘，听每一句的持续时间，控制键盘按下时间。得到`output.srt`
 - 用脚本把`output.srt`导入到AE，播放视频，回想之前敲击时的错误，修改`output.srt`文件，而不是直接修改AE上文本图层上的marker（这样便于以后使用，当然如果有导出图层文本marker的脚本就行，目前我没有），注意srt文件时间格式和AE上复制来的时间格式不一样。
 - 再把修改后的`output.srt`导入到AE，播放确认。
+
+### 帧率问题
+
+在某个属性或者时间重映射应用以下表达式，可以在不影响合成帧率的情况下，改变单个图层的播放帧率。
+
+```
+posterizeTime(10);
+value;
+```
+
+###  文字分解
+
+教程参考：https://www.youtube.com/watch?v=PFbQC1DAdkI
+
+文字为单位分解脚本：GG分解 https://x.com/gummasimedi/status/1190626096036773888
+
+笔画为单位分解脚本：https://aescripts.com/cuttananir/?aff=102
+
